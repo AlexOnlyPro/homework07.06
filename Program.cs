@@ -1,34 +1,33 @@
-﻿// Задача 34: Задайте массив заполненный случайными положительными трёхзначными числами. 
-//Напишите программу, которая покажет количество чётных чисел в массиве.
+﻿// Задача 36: Задайте одномерный массив, заполненный случайными числами. Найдите сумму элементов, стоящих на нечётных позициях.
 
-// [345, 897, 568, 234] -> 2
+// [3, 7, 23, 12] -> 19
+
+// [-4, -6, 89, 6] -> 0
 
 
-void CreateArray(int[] array)
+void FillArray(int[] array)
 {
-    for (int i = 0; i < array.Length; i++)
-        array[i] = new Random().Next(100, 1000);
-    
+    for (int i = 0; i < array.Length; i= i+1)
+        array[i] = new Random().Next(-9, 100);
 }
-void EvenNumbers(int[] array)
+void SumNonEvenPos(int[] array)
+{
+    int sum =0;
+    for (int i = 0; i < array.Length; i++)
     {
-        int mass =0;
-        for (int i = 0; i < array.Length; i++)
-        {
-            if (array[i]%2==0) mass ++;
-        }
-        System.Console.WriteLine(mass);
+        if (i%2!=0) sum += array[i];
     }
+    System.Console.WriteLine(sum);
+}
 void PrintArray(int[] array)
 {
-    for (int i = 0; i < array.Length; i++)
-    {
-        System.Console.WriteLine(array[i]);
-    }
+    foreach (var item in array)
+        Console.Write($"{item} ");
+    System.Console.WriteLine();
 }
 
-Console.Clear();
-int[] array = new int [4];
-CreateArray(array);
-PrintArray(array);
-EvenNumbers(array);
+
+int[] num = new int[5];
+FillArray(num);
+PrintArray(num);
+SumNonEvenPos(num);
